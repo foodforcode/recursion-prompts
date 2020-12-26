@@ -97,16 +97,16 @@ var range = function(x, y) {
   if (y === x - 1 || y === x + 1 || x === y) {
     return result;
   }
-  console.log(result);
-  if (y > x + 1) {
+  if (x < y) {
     x = x + 1;
-    result.push(x + 1);
+    result.push(x);
     range(x + 1, y);
-  } else if (x > y + 1) {
+  } else if (x > y) {
     x = x - 1;
-    result.push(x - 1);
+    result.push(x);
     range(x - 1, y);
   }
+  return result;
 };
 
 // 7. Compute the exponent of a number.
@@ -134,10 +134,28 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  if (n === 1) {
+    return true;
+  } else if (n > 1) {
+    n = powerOfTwo(n / 2);
+    // return n === 1;
+  }
+  return n === 1;
 };
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+  var result = '';
+
+  if (string.length === 0) {
+    return result;
+  }
+  if (string.length > 0) {
+    result += string[string.length - 1];
+    string = string.slice(0, -1);
+    return result += reverse(string);
+  }
+  // return result;
 };
 
 // 10. Write a function that determines if a string is a palindrome.
