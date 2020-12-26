@@ -137,8 +137,9 @@ var powerOfTwo = function(n) {
   if (n === 1) {
     return true;
   } else if (n > 1) {
-    n = powerOfTwo(n / 2);
-    // return n === 1;
+    console.log(n);
+    n = n / 2;
+    return powerOfTwo(n);
   }
   return n === 1;
 };
@@ -146,7 +147,6 @@ var powerOfTwo = function(n) {
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
   var result = '';
-
   if (string.length === 0) {
     return result;
   }
