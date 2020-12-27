@@ -92,19 +92,21 @@ var sumBelow = function(n) {
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
+
+//range(3, 8);
 var range = function(x, y) {
   var result = [];
-  if (y === x - 1 || y === x + 1 || x === y) {
+  if (Math.abs(x - y) <= 1) {
     return result;
   }
   if (x < y) {
-    x = x + 1;
-    result.push(x);
-    range(x + 1, y);
+    // x = x + 1;
+    result.push(x + 1);
+    return result.concat(range(x + 1, y));
   } else if (x > y) {
-    x = x - 1;
-    result.push(x);
-    range(x - 1, y);
+    // x = x - 1;
+    result.push(x - 1)
+    return result.concat(range(x - 1, y));
   }
   return result;
 };
@@ -137,9 +139,7 @@ var powerOfTwo = function(n) {
   if (n === 1) {
     return true;
   } else if (n > 1) {
-    console.log(n);
-    n = n / 2;
-    return powerOfTwo(n);
+    return powerOfTwo(n / 2);
   }
   return n === 1;
 };
